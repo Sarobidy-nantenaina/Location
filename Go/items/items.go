@@ -8,9 +8,9 @@ import (
 
 // InitItemsFile crée items.txt avec des objets par défaut s'il n'existe pas
 func InitItemsFile() error {
-	if _, err := os.Stat("../data/items.txt"); os.IsNotExist(err) {
+	if _, err := os.Stat("data/items.txt"); os.IsNotExist(err) {
 		defaultItems := []string{"Voiture", "Assiette", "Appartement"}
-		file, err := os.Create("../data/items.txt")
+		file, err := os.Create("data/items.txt")
 		if err != nil {
 			return fmt.Errorf("création de items.txt : %v", err)
 		}
@@ -26,7 +26,7 @@ func InitItemsFile() error {
 
 // ListItems affiche tous les objets
 func ListItems() error {
-	data, err := os.ReadFile("../data/items.txt")
+	data, err := os.ReadFile("data/items.txt")
 	if err != nil {
 		return fmt.Errorf("lecture de items.txt : %v", err)
 	}
@@ -43,7 +43,7 @@ func ListItems() error {
 
 // ItemExists vérifie si un objet existe
 func ItemExists(item string) (bool, error) {
-	data, err := os.ReadFile("../data/items.txt")
+	data, err := os.ReadFile("data/items.txt")
 	if err != nil {
 		return false, fmt.Errorf("lecture de items.txt : %v", err)
 	}
